@@ -5,12 +5,10 @@ EXPOSE 8085
 
 WORKDIR /goproxy
 
-COPY go.mod .
-COPY go.sum .
+COPY go.mod ./
+COPY go.sum ./
 RUN go mod download
 
 COPY . .
 
-RUN go build cmd/proxy/main.go   
-
-CMD ./main & go run cmd/repeater/repeater.go
+CMD go run cmd/proxy/main.go  & go run cmd/repeater/repeater.go
