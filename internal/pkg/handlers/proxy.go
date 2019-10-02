@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"io"
 	"net"
 	"net/http"
@@ -10,7 +9,6 @@ import (
 )
 
 func HandleTunneling(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("tunneling")
 
 	dest_conn, err := net.DialTimeout("tcp", r.Host, 10*time.Second)
 	if err != nil {
@@ -36,12 +34,8 @@ func transfer(destination io.WriteCloser, source io.ReadCloser) {
 	io.Copy(destination, source)
 }
 func HandleHTTP(w http.ResponseWriter, req *http.Request) {
-	fmt.Println("http")
-	// if isHTTPS {
-	// db.InsertRequest(req, "https://"+req.Host+req.RequestURI)
-	// } else {
+
 	db.InsertRequest(req, req.RequestURI)
-	// }
 	resp, err := http.DefaultTransport.RoundTrip(req)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusServiceUnavailable)
