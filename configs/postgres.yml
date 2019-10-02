@@ -1,5 +1,11 @@
+# db:
+#   host: localhost
+#   port: 5432
+#   database: proxy
+#   user: iamfrommoscow
 db:
-  host: localhost
+  host: proxy_postgres
   port: 5432
   database: proxy
-  user: iamfrommoscow
+  user: docker
+  password: docker

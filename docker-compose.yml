@@ -1,0 +1,22 @@
+version: '3.5'
+
+services:
+  app:
+    build: .
+    container_name: vm_golang_proxy
+    ports:
+      - 8888:8888
+      - 8085:8085
+    depends_on:
+      - proxy_postgres
+
+  proxy_postgres:
+    image: postgres:11
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=proxy
+    container_name: proxy_postgres
+    restart: on-failure
