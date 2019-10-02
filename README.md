@@ -14,7 +14,10 @@ docker-compose build
 docker-compose up
 ```
 
-Запросы проксируются через порт ```8888```
+Запросы проксируются через порт 
+```
+8888
+```
 
 
 
@@ -26,8 +29,15 @@ docker exec -it proxy_postgres psql -U docker -W proxy
 
 Ввести пароль
 ```
-docker```
+docker
+```
 
-С помощью запроса ```SELECT * FROM requests;``` или аналогичного найти необходимый запрос.
+С помощью запроса 
+```
+SELECT * FROM requests;
+``` или аналогичного найти необходимый запрос.
 
-Ввести в браузере ```http://localhost:8085/1```, где 1 - ```id``` запроса в таблице ```requests```
+Ввести в браузере 
+```
+http://localhost:8085/1
+```, где 1 - id запроса в таблице requests
