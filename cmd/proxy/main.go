@@ -1,6 +1,7 @@
 package main
 
 import (
+	server "proxy/internal/app"
 	"proxy/internal/pkg/helpers"
 
 	"github.com/spf13/viper"
@@ -13,11 +14,7 @@ func main() {
 		helpers.LogMessage(err.Error())
 		return
 	}
-	port = viper.GetString("port")
-	err := postgres.Connect()
-	if err != nil {
-		helpers.LogMessage(err.Error())
-		return
-	}
-	server.StartApp(params)
+	port := viper.GetString("port")
+
+	server.StartApp(port)
 }

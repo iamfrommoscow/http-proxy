@@ -60,7 +60,6 @@ func SelectRequest(id int) (*http.Request, error) {
 
 	rows, err := connection.Query(
 		selectHeadersByRequestID,
-		"SELECT key, value FROM headers WHERE parent = $1",
 		id,
 	)
 	defer rows.Close()

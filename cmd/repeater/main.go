@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"proxy/internal/pkg/db"
 	"proxy/internal/pkg/handlers"
 	"proxy/internal/pkg/helpers"
 
@@ -11,6 +12,7 @@ import (
 )
 
 func main() {
+	db.Connect()
 	viper.AddConfigPath("./configs")
 	viper.AddConfigPath("../configs")
 	viper.SetConfigName("repeater")

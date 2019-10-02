@@ -18,6 +18,5 @@ func RepeatRequest(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 	}
-	var client http.Client
-	resp, err := client.Do(request)
+	HandleHTTP(w, request)
 }
